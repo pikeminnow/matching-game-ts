@@ -42,9 +42,16 @@ function Game() {
   const [deckId, setDeckId] = useState(1);
 
   // timer hook
-  const { seconds, minutes, start, pause, reset } = useStopwatch({
-    autoStart: false,
-  });
+  // const { seconds, minutes, start, pause, reset } = useStopwatch({
+  //   autoStart: false,
+  // });
+  //fake timer hook 
+  const [seconds, setSeconds] = useState(4)
+  const [minutes, setMinutes] = useState(4)
+
+  const [start, setStart] = useState(() => { console.log("start attempted") });
+  const [pause, setPause] = useState(() => { console.log("pause attempted") });
+  const [reset, setReset] = useState(() => { console.log("reset attempted") });
 
   // side effects
   useEffect(() => {
@@ -113,9 +120,15 @@ function Game() {
         if unequal
           remove from array */
 
-  function handleFlip(cardClickEvent) {
-    let clickedCardId = cardClickEvent.target.attributes.cardid.value;
-    let clickedCardFlippedId = cardClickEvent.target.attributes.flippedid.value;
+  function handleFlip(cardClickEvent, cardID, flippedID) {
+    // let clickedCardId = cardClickEvent.target.attributes.cardid.value;
+    // let clickedCardFlippedId = cardClickEvent.target.attributes.flippedid.value;
+
+    console.log("card info: " + cardID + " " + flippedID)
+
+    let clickedCardId = cardID;
+    let clickedCardFlippedId = flippedID;
+
 
     // adds one to the number of moves
     setMovesCount(movesCount + 1);

@@ -9,10 +9,10 @@ function CardContainer({
   matchedArray,
   shuffledDeck,
 }) {
-  const [displayArray, setDisplayArray] = useState([]);
+  const [faceUpCards, setFaceUpCards] = useState([]);
 
   useEffect(() => {
-    setDisplayArray([...flippedArray, ...matchedArray]);
+    setFaceUpCards([...flippedArray, ...matchedArray]);
   }, [flippedArray, matchedArray]);
 
   if (shuffledDeck === null) {
@@ -23,7 +23,7 @@ function CardContainer({
     <Card
       key={`tableau${deckId}${index}`} //fix this later TODO
       card={card}
-      displayArray={displayArray}
+      faceUpCards={faceUpCards}
       setName={decks[deckId].setName}
       cardBack={decks[deckId].cardBack}
       handleFlip={handleFlip}
